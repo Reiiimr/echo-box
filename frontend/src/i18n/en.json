@@ -1,0 +1,151 @@
+{
+  "app_name": "Echo-Box",
+  "tagline": "Leave a little piece of yourself.",
+
+  "nav": {
+    "my_box": "My Box",
+    "inbox": "Inbox",
+    "send": "Send",
+    "tracking": "Tracking",
+    "profile": "Profile",
+    "search": "Search",
+    "logout": "Log out"
+  },
+
+  "auth": {
+    "welcome": "Welcome to Echo-Box",
+    "welcome_sub": "A vintage mailbox for the things you want to say.",
+    "sign_in": "Sign in with Google",
+    "signing_in": "Signing in..."
+  },
+
+  "setup": {
+    "title": "Set Up Your Box",
+    "subtitle": "Tell us a little about yourself. Some things can't be changed later.",
+    "username": "Username",
+    "username_hint": "Lowercase letters, numbers, underscores only",
+    "display_name": "Display Name",
+    "bio": "About Me",
+    "bio_placeholder": "A few words about yourself...",
+    "gender": "Gender",
+    "gender_locked": "Cannot be changed after setup",
+    "age": "Age",
+    "age_locked": "Cannot be changed after setup",
+    "box_name": "Name Your Box",
+    "box_color": "Box Colour",
+    "submit": "Open My Box",
+    "submitting": "Setting up...",
+    "gender_options": {
+      "prefer_not": "Prefer not to say",
+      "male": "Male",
+      "female": "Female",
+      "nonbinary": "Non-binary",
+      "other": "Other"
+    }
+  },
+
+  "box": {
+    "send_item": "Send an Item",
+    "view_inbox": "View Inbox",
+    "items_count_one": "{{count}} item",
+    "items_count_other": "{{count}} items",
+    "empty": "This box is empty.",
+    "edit_box": "Edit Box"
+  },
+
+  "inbox": {
+    "title": "Inbox",
+    "subtitle": "Items delivered to your box.",
+    "empty": "Your inbox is empty.",
+    "empty_sub": "When someone sends you something, it will appear here.",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "mark_read": "Mark as read",
+    "unread": "New",
+    "read": "Seen",
+    "react": "React"
+  },
+
+  "send": {
+    "title": "Send an Item",
+    "to": "To",
+    "choose_type": "Choose Item Type",
+    "cassette": "Cassette Tape",
+    "cassette_desc": "A voice message with a short note.",
+    "mail": "Mail",
+    "mail_desc": "A letter — text and optional image.",
+    "package": "Package",
+    "package_desc": "Text, image, and voice combined.",
+    "message": "Your Message",
+    "message_placeholder": "Write something...",
+    "send_as": "Send As",
+    "alias_display": "Your display name",
+    "alias_anonymous": "Anonymous",
+    "record_voice": "Record Voice",
+    "recording": "Recording... tap to stop",
+    "stop_recording": "Stop Recording",
+    "voice_recorded": "Voice recorded ✓",
+    "attach_image": "Attach Image",
+    "image_attached": "Image attached ✓",
+    "send_btn": "Send",
+    "sending": "Sending...",
+    "success": "Item sent!",
+    "cancel": "Cancel"
+  },
+
+  "tracking": {
+    "title": "Tracking",
+    "subtitle": "Items you have sent.",
+    "empty": "You haven't sent anything yet.",
+    "delivered": "Delivered",
+    "pending": "Pending",
+    "seen": "Seen",
+    "unseen": "Not yet seen",
+    "to": "To",
+    "sent_at": "Sent"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "edit_title": "Edit Profile",
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "saved": "Profile updated!",
+    "display_name": "Display Name",
+    "username": "Username",
+    "bio": "About Me",
+    "box_name": "Box Name",
+    "box_color": "Box Colour",
+    "gender_locked": "Gender (cannot be changed)",
+    "age_locked": "Age (cannot be changed)",
+    "danger_zone": "Danger Zone",
+    "delete_account": "Delete Account",
+    "delete_confirm": "Are you sure? This cannot be undone.",
+    "deleting": "Deleting account...",
+    "blocked_users": "Blocked Users",
+    "unblock": "Unblock"
+  },
+
+  "search": {
+    "title": "Find a Box",
+    "placeholder": "Search by username...",
+    "no_results": "No users found.",
+    "search_btn": "Search"
+  },
+
+  "item_types": {
+    "cassette": "Cassette Tape",
+    "mail": "Mail",
+    "package": "Package"
+  },
+
+  "from": "From",
+  "anonymous": "Anonymous",
+  "block": "Block",
+  "report": "Report",
+  "report_reason": "Why are you reporting this user?",
+  "report_submit": "Submit Report",
+  "loading": "Loading...",
+  "error_generic": "Something went wrong. Please try again.",
+  "back": "Back"
+}

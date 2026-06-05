@@ -1,0 +1,151 @@
+{
+  "app_name": "Echo-Box",
+  "tagline": "Mag-iwan ng maliit na bahagi ng iyong sarili.",
+
+  "nav": {
+    "my_box": "Aking Kahon",
+    "inbox": "Inbox",
+    "send": "Ipadala",
+    "tracking": "Subaybay",
+    "profile": "Profile",
+    "search": "Maghanap",
+    "logout": "Mag-logout"
+  },
+
+  "auth": {
+    "welcome": "Maligayang pagdating sa Echo-Box",
+    "welcome_sub": "Isang vintage na mailbox para sa mga bagay na gusto mong sabihin.",
+    "sign_in": "Mag-sign in gamit ang Google",
+    "signing_in": "Nagsi-sign in..."
+  },
+
+  "setup": {
+    "title": "I-setup ang Iyong Kahon",
+    "subtitle": "Sabihin sa amin ang kaunti tungkol sa iyong sarili. Ang ilang bagay ay hindi na mababago.",
+    "username": "Username",
+    "username_hint": "Maliliit na titik, numero, at underscore lamang",
+    "display_name": "Display Name",
+    "bio": "Tungkol sa Akin",
+    "bio_placeholder": "Ilang salita tungkol sa iyong sarili...",
+    "gender": "Kasarian",
+    "gender_locked": "Hindi na mababago pagkatapos ng setup",
+    "age": "Edad",
+    "age_locked": "Hindi na mababago pagkatapos ng setup",
+    "box_name": "Pangalanan ang Iyong Kahon",
+    "box_color": "Kulay ng Kahon",
+    "submit": "Buksan ang Aking Kahon",
+    "submitting": "Ina-ayos...",
+    "gender_options": {
+      "prefer_not": "Mas gusto ko na huwag sabihin",
+      "male": "Lalaki",
+      "female": "Babae",
+      "nonbinary": "Non-binary",
+      "other": "Iba pa"
+    }
+  },
+
+  "box": {
+    "send_item": "Magpadala ng Item",
+    "view_inbox": "Tingnan ang Inbox",
+    "items_count_one": "{{count}} item",
+    "items_count_other": "{{count}} mga item",
+    "empty": "Walang laman ang kahong ito.",
+    "edit_box": "I-edit ang Kahon"
+  },
+
+  "inbox": {
+    "title": "Inbox",
+    "subtitle": "Mga item na naihatid sa iyong kahon.",
+    "empty": "Walang laman ang iyong inbox.",
+    "empty_sub": "Kapag may nagpadala sa iyo, lalabas ito dito.",
+    "delete": "Burahin",
+    "deleting": "Binubura...",
+    "mark_read": "Markahan bilang nabasa",
+    "unread": "Bago",
+    "read": "Nakita",
+    "react": "Mag-react"
+  },
+
+  "send": {
+    "title": "Magpadala ng Item",
+    "to": "Para kay",
+    "choose_type": "Pumili ng Uri ng Item",
+    "cassette": "Cassette Tape",
+    "cassette_desc": "Isang voice message na may maikling tala.",
+    "mail": "Sulat",
+    "mail_desc": "Isang liham — teksto at opsyonal na larawan.",
+    "package": "Pakete",
+    "package_desc": "Teksto, larawan, at boses na pinagsama.",
+    "message": "Iyong Mensahe",
+    "message_placeholder": "Sumulat ng isang bagay...",
+    "send_as": "Ipadala Bilang",
+    "alias_display": "Ang iyong display name",
+    "alias_anonymous": "Hindi kilala",
+    "record_voice": "I-record ang Boses",
+    "recording": "Nagre-record... pindutin para ihinto",
+    "stop_recording": "Ihinto ang Pag-record",
+    "voice_recorded": "Na-record na ang boses ✓",
+    "attach_image": "Mag-attach ng Larawan",
+    "image_attached": "Na-attach na ang larawan ✓",
+    "send_btn": "Ipadala",
+    "sending": "Nagpapadala...",
+    "success": "Naipadala na ang item!",
+    "cancel": "Kanselahin"
+  },
+
+  "tracking": {
+    "title": "Subaybay",
+    "subtitle": "Mga item na iyong naipadala.",
+    "empty": "Wala ka pang naipadala.",
+    "delivered": "Naihatid",
+    "pending": "Naghihintay",
+    "seen": "Nakita",
+    "unseen": "Hindi pa nakita",
+    "to": "Para kay",
+    "sent_at": "Naipadala"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "edit_title": "I-edit ang Profile",
+    "save": "I-save ang mga Pagbabago",
+    "saving": "Sine-save...",
+    "saved": "Na-update na ang profile!",
+    "display_name": "Display Name",
+    "username": "Username",
+    "bio": "Tungkol sa Akin",
+    "box_name": "Pangalan ng Kahon",
+    "box_color": "Kulay ng Kahon",
+    "gender_locked": "Kasarian (hindi na mababago)",
+    "age_locked": "Edad (hindi na mababago)",
+    "danger_zone": "Danger Zone",
+    "delete_account": "Burahin ang Account",
+    "delete_confirm": "Sigurado ka ba? Hindi na ito mababawi.",
+    "deleting": "Binubura ang account...",
+    "blocked_users": "Mga Na-block na User",
+    "unblock": "I-unblock"
+  },
+
+  "search": {
+    "title": "Hanapin ang isang Kahon",
+    "placeholder": "Maghanap sa pamamagitan ng username...",
+    "no_results": "Walang nahanap na user.",
+    "search_btn": "Maghanap"
+  },
+
+  "item_types": {
+    "cassette": "Cassette Tape",
+    "mail": "Sulat",
+    "package": "Pakete"
+  },
+
+  "from": "Mula kay",
+  "anonymous": "Hindi kilala",
+  "block": "I-block",
+  "report": "I-report",
+  "report_reason": "Bakit mo iri-report ang user na ito?",
+  "report_submit": "Isumite ang Report",
+  "loading": "Naglo-load...",
+  "error_generic": "May naganap na error. Subukan ulit.",
+  "back": "Bumalik"
+}

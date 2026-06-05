@@ -1,0 +1,29 @@
+# ── Dependencies ─────────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# ── Build output ─────────────────────────────────────────────────────
+frontend/dist/
+frontend/.vite/
+
+# ── Environment / secrets ────────────────────────────────────────────
+.env
+**/.env
+# Keep .env.example files
+!**/.env.example
+
+# ── Firebase CLI ─────────────────────────────────────────────────────
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# ── OS / editor ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ── Logs ─────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
