@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 import { updateProfile, deleteAccount, getBlocked, unblockUser } from '../services/api';
 import { BOX_COLORS } from '../components/BoxDisplay';
 import BoxDisplay from '../components/BoxDisplay';
+import LanguageToggle from '../components/LanguageToggle';
 
 const GENDER_LABELS = {
   prefer_not: 'Prefer not to say', male: 'Male', female: 'Female',
@@ -14,8 +15,8 @@ const GENDER_LABELS = {
 
 export default function ProfilePage() {
   const { dbUser, refreshProfile, logout } = useAuth();
-  const { t }      = useTranslation();
-  const navigate   = useNavigate();
+  const { t }    = useTranslation();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     username:     dbUser?.username     || '',
@@ -24,16 +25,24 @@ export default function ProfilePage() {
     box_name:     dbUser?.box_name     || 'My Box',
     box_color:    dbUser?.box_color    || BOX_COLORS[0],
   });
-  const [saving,     setSaving]     = useState(false);
-  const [blocked,    setBlocked]    = useState([]);
-  const [loadBlocked,setLoadBlocked]= useState(false);
-  const [activeTab,  setActiveTab]  = useState('edit'); // 'edit' | 'blocked'
-  const [errors,     setErrors]     = useState({});
+  const [saving,      setSaving]      = useState(false);
+  const [blocked,     setBlocked]     = useState([]);
+  const [loadBlocked, setLoadBlocked] = useState(false);
+  const [activeTab,   setActiveTab]   = useState('edit');
+  const [errors,      setErrors]      = useState({});
+  const [copied,      setCopied]      = useState(false);
 
   const set = (k, v) => { setForm(f => ({ ...f, [k]: v })); setErrors(e => ({ ...e, [k]: undefined })); };
-
-  // Preview user object for BoxDisplay
   const preview = { ...dbUser, ...form };
+
+  const profileLink = `${window.location.origin}/${dbUser?.username}`;
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(profileLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+    toast.success('Link copied!');
+  };
 
   useEffect(() => {
     if (activeTab === 'blocked') {
@@ -47,9 +56,9 @@ export default function ProfilePage() {
 
   const handleSave = async () => {
     const e = {};
-    if (!form.username.trim())     e.username     = 'Required';
-    if (!/^[a-z0-9_]{3,30}$/.test(form.username)) e.username = '3–30 chars, lowercase/numbers/underscore';
-    if (!form.display_name.trim()) e.display_name = 'Required';
+    if (!form.username.trim())                          e.username     = 'Required';
+    if (!/^[a-z0-9_]{3,30}$/.test(form.username))      e.username     = '3–30 chars, lowercase/numbers/underscore';
+    if (!form.display_name.trim())                      e.display_name = 'Required';
     if (Object.keys(e).length) { setErrors(e); return; }
 
     setSaving(true);
@@ -71,9 +80,7 @@ export default function ProfilePage() {
       await unblockUser(targetId);
       setBlocked(prev => prev.filter(b => b.blocked_id !== targetId));
       toast.success(`@${username} unblocked.`);
-    } catch {
-      toast.error(t('error_generic'));
-    }
+    } catch { toast.error(t('error_generic')); }
   };
 
   const handleDeleteAccount = async () => {
@@ -83,9 +90,7 @@ export default function ProfilePage() {
       await deleteAccount();
       await logout();
       navigate('/login');
-    } catch {
-      toast.error(t('error_generic'));
-    }
+    } catch { toast.error(t('error_generic')); }
   };
 
   return (
@@ -94,7 +99,27 @@ export default function ProfilePage() {
         <h1>{t('profile.title')}</h1>
       </div>
 
-      {/* Tabs */}
+      {/* ── Share link card ──────────────────────────────── */}
+      <div className="card share-card">
+        <div className="share-card-inner">
+          <div>
+            <p className="share-label">🔗 Your Public Box Link</p>
+            <p className="share-url">{profileLink}</p>
+            <p className="share-hint">Anyone with this link can send you mail — no account needed for text!</p>
+          </div>
+          <button className="btn btn-brass btn-sm share-copy-btn" onClick={handleCopyLink}>
+            {copied ? '✓ Copied!' : 'Copy Link'}
+          </button>
+        </div>
+      </div>
+
+      {/* ── Language ─────────────────────────────────────── */}
+      <div className="card" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.85rem 1.25rem' }}>
+        <span style={{ fontSize: '0.88rem', color: 'var(--brown-mid)' }}>🌐 {t('nav.language')}</span>
+        <LanguageToggle />
+      </div>
+
+      {/* ── Tabs ─────────────────────────────────────────── */}
       <div className="tabs">
         <button className={`tab ${activeTab === 'edit' ? 'active' : ''}`} onClick={() => setActiveTab('edit')}>
           ✏️ {t('profile.edit_title')}
@@ -104,10 +129,9 @@ export default function ProfilePage() {
         </button>
       </div>
 
-      {/* ── EDIT TAB ── */}
+      {/* ── Edit tab ─────────────────────────────────────── */}
       {activeTab === 'edit' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-          {/* Form */}
+        <div className="profile-edit-grid">
           <div>
             <div className="form-group">
               <label className="form-label">{t('profile.display_name')}</label>
@@ -126,7 +150,6 @@ export default function ProfilePage() {
               <textarea className="textarea" value={form.bio} onChange={e => set('bio', e.target.value)} maxLength={200} style={{ minHeight: '70px' }} />
             </div>
 
-            {/* Immutable fields */}
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label">{t('profile.gender_locked')} 🔒</label>
@@ -168,7 +191,7 @@ export default function ProfilePage() {
         </div>
       )}
 
-      {/* ── BLOCKED TAB ── */}
+      {/* ── Blocked tab ──────────────────────────────────── */}
       {activeTab === 'blocked' && (
         loadBlocked ? (
           <div className="spinner-wrap"><div className="spinner" /></div>
@@ -195,7 +218,7 @@ export default function ProfilePage() {
         )
       )}
 
-      {/* ── DANGER ZONE ── */}
+      {/* ── Danger zone ──────────────────────────────────── */}
       <div className="divider" style={{ marginTop: '3rem' }} />
       <div className="card" style={{ border: '2px solid var(--rust)', background: '#fff5f5' }}>
         <h3 style={{ color: 'var(--rust)', marginBottom: '0.75rem', fontSize: '1rem' }}>

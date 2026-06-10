@@ -9,7 +9,8 @@
     "tracking": "Tracking",
     "profile": "Profile",
     "search": "Search",
-    "logout": "Log out"
+    "logout": "Log out",
+    "language": "Language"
   },
 
   "auth": {

@@ -1,15 +1,16 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import Navbar      from './components/Navbar';
-import PrivateRoute from './components/PrivateRoute';
+import Navbar           from './components/Navbar';
+import PrivateRoute     from './components/PrivateRoute';
 
-import LoginPage    from './pages/LoginPage';
-import SetupPage    from './pages/SetupPage';
-import BoxPage      from './pages/BoxPage';
-import InboxPage    from './pages/InboxPage';
-import TrackingPage from './pages/TrackingPage';
-import ProfilePage  from './pages/ProfilePage';
-import SearchPage   from './pages/SearchPage';
+import LoginPage        from './pages/LoginPage';
+import SetupPage        from './pages/SetupPage';
+import BoxPage          from './pages/BoxPage';
+import InboxPage        from './pages/InboxPage';
+import TrackingPage     from './pages/TrackingPage';
+import ProfilePage      from './pages/ProfilePage';
+import SearchPage       from './pages/SearchPage';
+import PublicProfilePage from './pages/PublicProfilePage';
 
 export default function App() {
   const { currentUser, dbUser, loading } = useAuth();
@@ -24,13 +25,14 @@ export default function App() {
   }
 
   const isPublicRoute = ['/login', '/setup'].includes(location.pathname);
+  const showNav = currentUser && dbUser && !isPublicRoute;
 
   return (
     <>
-      {currentUser && dbUser && !isPublicRoute && <Navbar />}
+      {showNav && <Navbar />}
 
       <Routes>
-        {/* Public */}
+        {/* Auth */}
         <Route path="/login" element={
           currentUser && dbUser
             ? <Navigate to="/box" replace />
@@ -55,8 +57,13 @@ export default function App() {
           <Route path="/search"        element={<SearchPage />} />
         </Route>
 
+        {/* Public profile — /:username (must be last) */}
+        <Route path="/:username" element={<PublicProfilePage />} />
+
         {/* Fallback */}
-        <Route path="*" element={<Navigate to={currentUser && dbUser ? '/box' : '/login'} replace />} />
+        <Route path="*" element={
+          <Navigate to={currentUser && dbUser ? '/box' : '/login'} replace />
+        } />
       </Routes>
     </>
   );
